@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+libraries=["fix_fft",{"package"\:"arduino","platform"\:"avr","library"\:"SPI"},"DS3231",{"package"\:"adafruit","platform"\:"avr","library"\:"Wire"},{"package"\:"arduino","platform"\:"avr","library"\:"EEPROM"},"Adafruit NeoPixel",{"package"\:"arduino","platform"\:"avr","library"\:"Wire"},{"package"\:"arduino","platform"\:"avr","library"\:"HID"},{"package"\:"arduino","platform"\:"avr","library"\:"SoftwareSerial"}]
