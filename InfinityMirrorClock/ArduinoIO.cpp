@@ -18,8 +18,8 @@ ArduinoIO :: ArduinoIO(){
 	m_ledPin = 4;
 	m_buttonPin = 2;
 	m_soundPin = A0;
-	m_TX = 10;
-	m_RX = 11;
+	m_TX = 11; //Vertauscht klassiker :D
+	m_RX = 10;
 }
 
 void ArduinoIO :: initArduino(void){

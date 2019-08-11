@@ -16,16 +16,16 @@ void linspace(double a, double b, uint8_t n, double* arr){
    }
 }
 
-uint8_t writeToSerial(uint8_t serialPrintTime, DS3231 clock){
+uint8_t writeToSerial(uint8_t serialPrintTime, DS3231* clock){
 	if(serialPrintTime == 100){
 		serialPrintTime = 0;
 		Serial.println("Time: ");
 		bool h12, PM;
-		Serial.print(clock.getHour(h12,PM));
+		Serial.print(clock->getHour(h12,PM));
 		Serial.println(" : ");
-		Serial.print(clock.getMinute());
+		Serial.print(clock->getMinute());
 		Serial.println(" : ");
-		Serial.print(clock.getSecond());
+		Serial.print(clock->getSecond());
 		Serial.println("\n");
 		Serial.println("System State: ");
 		//Serial.print(systemState);

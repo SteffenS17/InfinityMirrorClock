@@ -9,9 +9,11 @@
 #define UTILITIES_H_
 #include <Arduino.h>
 #include <DS3231.h>
+#include <SoftwareSerial.h>
 
 void linspace(double a, double b, uint8_t n, double* arr);
 
-uint8_t writeToSerial(uint8_t serialPrintTime, DS3231 clock);
+uint8_t writeToSerial(uint8_t serialPrintTime, DS3231* clock);
+
 
 #endif /* UTILITIES_H_ */
