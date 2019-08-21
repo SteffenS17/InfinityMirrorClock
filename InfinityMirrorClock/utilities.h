@@ -11,9 +11,14 @@
 #include <DS3231.h>
 #include <SoftwareSerial.h>
 
+
 void linspace(double a, double b, uint8_t n, double* arr);
 
-uint8_t writeToSerial(uint8_t serialPrintTime, DS3231* clock);
+void writeToSerial(DS3231* clock);
 
+extern String btString;
+extern bool stringComplete;
+
+void btSerialEvent(SoftwareSerial* BluetoothSerial);
 
 #endif /* UTILITIES_H_ */

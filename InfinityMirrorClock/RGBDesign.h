@@ -10,17 +10,19 @@
 
 #include <Arduino.h>
 #include "Adafruit_NeoPixel.h"
+#include <SoftwareSerial.h>
+#include "utilities.h"
 
 #define NUMBER_OF_MODES 6
 
 class RGBDesign{
 public:
 	RGBDesign();
-	void colorWipe(Adafruit_NeoPixel* strip, uint32_t c, uint8_t wait);
-	void whiteOverRainbow(Adafruit_NeoPixel* strip, uint8_t wait, uint8_t whiteSpeed, uint8_t whiteLength);
-	void pulseWhite(Adafruit_NeoPixel* strip, uint8_t wait);
-	void rainbowFade2White(Adafruit_NeoPixel* strip, uint8_t wait, int rainbowLoops, int whiteLoops);
-	void setRGBDesign(Adafruit_NeoPixel* strip);
+	void colorWipe(Adafruit_NeoPixel* strip, uint32_t c, uint8_t wait, SoftwareSerial* BluetoothSerial);
+	void whiteOverRainbow(Adafruit_NeoPixel* strip, uint8_t wait, uint8_t whiteSpeed, uint8_t whiteLength, SoftwareSerial* BluetoothSerial);
+	void pulseWhite(Adafruit_NeoPixel* strip, uint8_t wait, SoftwareSerial* BluetoothSerial);
+	void rainbowFade2White(Adafruit_NeoPixel* strip, uint8_t wait, int rainbowLoops, int whiteLoops, SoftwareSerial* BluetoothSerial);
+	void setRGBDesign(Adafruit_NeoPixel* strip,SoftwareSerial* BluetoothSerial);
 private:
 	uint32_t Wheel(Adafruit_NeoPixel* strip, byte WheelPos);
 	void fullWhite(Adafruit_NeoPixel* strip);
@@ -30,7 +32,6 @@ private:
 	uint8_t green(uint32_t c);
 	uint8_t blue(uint32_t c);
 	uint8_t m_modeCounter;
-	byte* m_neopix_gamma;
 };
 
 

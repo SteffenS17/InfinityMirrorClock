@@ -33,7 +33,10 @@ void ClassicDesign::setHourDesignOnStrip(Adafruit_NeoPixel* strip){
 
 void ClassicDesign::setTimeOnStrip(DS3231* clock, Adafruit_NeoPixel* strip){
 
+	//Variable Declaration
 	double secPosArr[60];
+	double hourPosArr[13];
+
 	uint16_t pixelBrightness = 255;// strip->getBrightness();
 	uint16_t NUM_LEDS =  strip->numPixels();
 	uint8_t second = clock->getSecond();
@@ -41,12 +44,25 @@ void ClassicDesign::setTimeOnStrip(DS3231* clock, Adafruit_NeoPixel* strip){
 	bool h12, PM;
 	uint8_t hour = clock->getHour(h12,PM);
 
-	double hourPosArr[13];
+	//Filling hour/second position array on strip
 	linspace(0.0, (double) NUM_LEDS, 13, hourPosArr);
 	linspace(0.0, (double) NUM_LEDS, 60, secPosArr);
-	uint8_t sPos = (uint8_t) round(secPosArr[second]);
-	uint8_t mPos = (uint8_t) round(secPosArr[minute]);
-	uint8_t hPos = (uint8_t) round(hourPosArr[hour]);
+
+	//Get Position from array
+	//Shift um Uhrzeit auf 12 Uhr darzustellen nicht auf 6
+	uint8_t sPos = (uint8_t) round(NUM_LEDS/2 + secPosArr[second]);
+	uint8_t mPos = (uint8_t) round(NUM_LEDS/2 + secPosArr[minute]);
+	uint8_t hPos = (uint8_t) round(NUM_LEDS/2 + hourPosArr[hour]);
+
+	if(sPos > NUM_LEDS){
+		sPos = (uint8_t) round(secPosArr[second] - NUM_LEDS/2);
+	}
+	if(mPos > NUM_LEDS){
+		mPos = (uint8_t) round(secPosArr[minute] - NUM_LEDS/2);
+	}
+	if(hPos > NUM_LEDS){
+		hPos = (uint8_t) round(hourPosArr[hour] - NUM_LEDS/2);
+	}
 
 	strip->setPixelColor(sPos-1,strip->Color(pixelBrightness/4,0,0));
 	strip->setPixelColor(sPos,strip->Color(pixelBrightness,0,0));
