@@ -29,13 +29,13 @@ void setup() {
 	Strip->show();
 	//#########################################
 	//Einkommentieren wenn Uhr gesetzt werden soll
-	Clock->setClockMode(true); // set to 12h
-	Clock->setYear(2019);
-	Clock->setMonth(8);
-	Clock->setDate(21);
-	Clock->setHour(10);
-	Clock->setMinute(18);
-	Clock->setSecond(59);
+//	Clock->setClockMode(true); // set to 12h
+//	Clock->setYear(2019);
+//	Clock->setMonth(8);
+//	Clock->setDate(21);
+//	Clock->setHour(1);
+//	Clock->setMinute(37);
+//	Clock->setSecond(59);
 	//############################################
 	//Einkommentieren wenn Schallsensor neu kalibiert werden soll
 	//SpectrumAnalyzer.calibrateSensor();

@@ -131,6 +131,55 @@ void evalSerialEvent(){
 			Strip->setBrightness((uint8_t) brightness);
 		}
 	}
+
+	if((btChar[0] == '<') && (btChar[1] == 'T') &&(btChar[14] == '>')){
+		byte temp1, temp2;
+		byte year, month, day, hour, minute, second;
+		//year
+		temp1 = (byte)btChar[2] - 48;
+		temp2 = (byte)btChar[3] - 48;
+		year = temp1*10 + temp2;
+		//month
+		temp1 = (byte)btChar[4] - 48;
+		temp2 = (byte)btChar[5] - 48;
+		month = temp1*10 + temp2;
+		//year
+		temp1 = (byte)btChar[6] - 48;
+		temp2 = (byte)btChar[7] - 48;
+		day = temp1*10 + temp2;
+		//hour
+		temp1 = (byte)btChar[8] - 48;
+		temp2 = (byte)btChar[9] - 48;
+		hour = temp1*10 + temp2;
+		//minute
+		temp1 = (byte)btChar[10] - 48;
+		temp2 = (byte)btChar[11] - 48;
+		minute = temp1*10 + temp2;
+		//second
+		temp1 = (byte)btChar[12] - 48;
+		temp2 = (byte)btChar[13] - 48;
+		second = temp1*10 + temp2;
+		//Debug
+		//		Serial.print(year);
+		//		Serial.println(":");
+		//		Serial.print(month);
+		//		Serial.println(":");
+		//		Serial.print(day);
+		//		Serial.println(":");
+		//		Serial.print(hour);
+		//		Serial.println(":");
+		//		Serial.print(minute);
+		//		Serial.println(":");
+		//		Serial.print(second);
+		//		Serial.println("\n");
+		Clock->setClockMode(true); // set to 12h
+		Clock->setYear(year);
+		Clock->setMonth(month);
+		Clock->setDate(day);
+		Clock->setHour(hour);
+		Clock->setMinute(minute);
+		Clock->setSecond(second);
+	}
 }
 
 #endif /* INFINITYMIRRORCLOCK_DEF_H_ */
